@@ -1,0 +1,41 @@
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee
+http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+         version="2.4">
+
+    <resource-ref>
+        <description>DB Connection</description>
+        <res-ref-name>jdbc/ada_datasource</res-ref-name>
+        <res-type>javax.sql.DataSource</res-type>
+        <res-auth>Container</res-auth>
+    </resource-ref>
+
+    <display-name>ADA Demo Servlet</display-name>
+
+
+    <servlet>
+        <servlet-name>authentication</servlet-name>
+        <servlet-class>controller.AuthControllerServlet</servlet-class>
+        <init-param>
+            <param-name>userList</param-name>
+            <param-value>[{"name" : "anar", "password": "qwerty"},{"name" : "emil", "password": "qwerty"},{"name" : "sovet", "password": "david9"}]</param-value>
+        </init-param>
+    </servlet>
+
+    <servlet>
+        <servlet-name>dashboard</servlet-name>
+        <servlet-class>controller.DashboardControllerServlet</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>authentication</servlet-name>
+        <url-pattern>/auth</url-pattern>
+    </servlet-mapping>
+
+    <servlet-mapping>
+        <servlet-name>dashboard</servlet-name>
+        <url-pattern>/dashboard</url-pattern>
+    </servlet-mapping>
+
+</web-app>
